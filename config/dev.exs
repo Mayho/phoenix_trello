@@ -10,8 +10,12 @@ config :phoenix_trello, PhoenixTrello.Endpoint,
   http: [port: 4000],
   debug_errors: true,
   code_reloader: true,
+  cache_static_lookup: false,
   check_origin: false,
-  watchers: []
+  watchers: [
+    node: ["node_modules/webpack/bin/webpack.js", "--watch", "--color",
+    cd: Path.expand("../", __DIR__)]
+  ]
 
 
 # Watch static and templates for browser reloading.
@@ -35,8 +39,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :phoenix_trello, PhoenixTrello.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "root",
+  password: "",
   database: "phoenix_trello_dev",
   hostname: "localhost",
   pool_size: 10
